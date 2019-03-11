@@ -5,4 +5,9 @@
     <string name="title_activity_result_page">result_page</string>
     <string name="title_activity_help">help</string>
     <string name="title_activity_search">search</string>
+    <string name="expand_calendar">Expand Calendar</string>
+    <string name="care_calendar">Care Calendar</string>
+    <string name="my_plants">My Plants</string>
+    <string name="plant_fact">Plant Fact</string>
+    <string name="add_button">add_button</string>
 </resources>
