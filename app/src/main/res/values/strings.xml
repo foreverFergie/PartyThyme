@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name"> </string>
+    <string name="app_name">Party Thyme </string>
+    <string name="title_activity_plant_info">plant_info</string>
+    <string name="title_activity_settings">settings</string>
+    <string name="title_activity_result_page">result_page</string>
+    <string name="title_activity_help">help</string>
+    <string name="title_activity_search">search</string>
 </resources>
