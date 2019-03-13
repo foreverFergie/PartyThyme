@@ -111,6 +111,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return checkdb;
     }
 
+
+
     @Override
     public void onOpen(SQLiteDatabase db)
     {
