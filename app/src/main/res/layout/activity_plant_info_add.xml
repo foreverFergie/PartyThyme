@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffffff"
+    tools:context=".plant_info">
+
+
+    <ImageView
+        android:id="@+id/plantImage"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="135dp"
+        android:layout_marginTop="75dp"
+        />
+
+    <TextView
+        android:id="@+id/plantName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Default Text"
+        android:layout_marginLeft="167dp"
+        android:layout_marginTop="235dp"
+        />
+
+
+
+    <ListView
+        android:id="@+id/factList"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="325dp"
+        >
+    </ListView>
+
+    <Button
+        android:id="@+id/addToMyPlantsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="260dp"
+        android:layout_marginLeft="130dp"
+        android:text="@string/add_to_my_plants" />
+
+
+</RelativeLayout>

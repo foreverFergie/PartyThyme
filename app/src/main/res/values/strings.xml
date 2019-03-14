@@ -10,4 +10,5 @@
     <string name="my_plants">My Plants</string>
     <string name="plant_fact">Plant Fact</string>
     <string name="add_button">add_button</string>
+    <string name="add_to_my_plants">Add To My Plants</string>
 </resources>
