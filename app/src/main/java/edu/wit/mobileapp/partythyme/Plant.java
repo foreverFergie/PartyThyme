@@ -2,11 +2,13 @@ package edu.wit.mobileapp.partythyme;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 public class Plant {
 
-    String name;
+    public Bitmap image;
+    public String name;
     boolean annual;
     boolean biennial;
     boolean perrenial;
