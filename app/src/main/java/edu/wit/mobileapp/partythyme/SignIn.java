@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -27,6 +29,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+
         signInStatus = findViewById(R.id.sign_in_status);
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
@@ -47,14 +50,25 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
 
     private void updateUI(GoogleSignInAccount account) {
 
+        final GoogleSignInAccount accounSend = account;
+
         if (account != null) {
             signInStatus.setText(getString(R.string.signed_in, account.getDisplayName()));
-            Intent send = new Intent();
-            send.setClass(SignIn.this,MainActivity.class);
-            Bundle bundle= new Bundle();
-            bundle.putString("email",account.getEmail());
-            send.putExtras(bundle);
-            startActivity(send);
+
+            Button mainPage = (Button)findViewById(R.id.continueToMain);
+
+            mainPage.setOnClickListener(new View.OnClickListener(){
+                public void onClick(View v){
+                    Intent send = new Intent();
+                    send.setClass(SignIn.this,MainActivity.class);
+                    Bundle bundle= new Bundle();
+                    bundle.putString("email",accounSend.getEmail());
+                    send.putExtras(bundle);
+                    startActivity(send);
+                }
+
+
+            });
 
 
 
@@ -92,7 +106,13 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
 
 
     public void onClick(View v) {
-        signIn();
+        switch(v.getId()){
+            case R.id.sign_in_button:
+                signIn();
+                break;
+
+        }
+
     }
 
 
