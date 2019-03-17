@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">Party Thyme </string>
+    <string name="app_name">Party Thyme</string>
+    <string name="app_name_1">Party Thyme</string>
     <string name="title_activity_plant_info">plant_info</string>
+    <string name="title_activity_main">main</string>
     <string name="title_activity_settings">settings</string>
     <string name="title_activity_result_page">result_page</string>
     <string name="title_activity_help">help</string>
@@ -11,4 +13,8 @@
     <string name="plant_fact">Plant Fact</string>
     <string name="add_button">add_button</string>
     <string name="add_to_my_plants">Add To My Plants</string>
+    <string name="signed_in">Signed in as: %s</string>
+    <string name="signed_out">Signed out</string>
+
+    <string name="server_client_id">758752525047-coj5a0qivi0nrn8gc83n4p069ak01a3r.apps.googleusercontent.com</string>
 </resources>

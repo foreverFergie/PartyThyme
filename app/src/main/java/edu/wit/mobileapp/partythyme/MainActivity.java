@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+
         Bitmap defaultImage;
         defaultImage = BitmapFactory.decodeResource(getResources(), R.drawable.default_plant);
 

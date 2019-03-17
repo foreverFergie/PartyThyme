@@ -10,15 +10,17 @@
         android:layout_height="109dp"
         android:layout_gravity="center"
         android:background="@drawable/background"/>
+
     <TextView
         android:id="@+id/plant_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="3dp"
         android:layout_marginTop="95dp"
+        android:layout_gravity="center_horizontal"
         android:fontFamily="sans-serif-smallcaps"
 
-        android:textSize="18sp"/>
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp" />
 
     <android.support.v7.widget.AppCompatSpinner
         android:id="@+id/spinner"
