@@ -1,5 +1,6 @@
 package edu.wit.mobileapp.partythyme;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -26,7 +27,14 @@ public class plant_info_add extends AppCompatActivity {
 
         //Update image based on plant
         ImageView plantImage = (ImageView) findViewById(R.id.plantImage);
-        Bitmap plantBitmap = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier(plant + "/" + name + ".png", "mipmap", this.getPackageName()));
+        int plantImageId = getPlantImage(this, name);
+        Bitmap plantBitmap;
+        if(plantImageId > 0) {
+            plantBitmap = BitmapFactory.decodeResource(getResources(), getPlantImage(this, name));
+        }
+        else {
+            plantBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.default_plant);
+        }
         plantImage.setImageBitmap(plantBitmap);
 
         //Update displayed plant name based on plant
@@ -81,5 +89,9 @@ public class plant_info_add extends AppCompatActivity {
             return "Yes";
         }
         return "No";
+    }
+
+    public static int getPlantImage(Context context, String name){
+        return context.getResources().getIdentifier(name.toLowerCase(), "drawable", context.getPackageName());
     }
 }

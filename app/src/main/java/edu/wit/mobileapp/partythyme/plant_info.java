@@ -18,6 +18,8 @@ import org.w3c.dom.Text;
 
 import java.lang.reflect.Array;
 
+import static edu.wit.mobileapp.partythyme.plant_info_add.getPlantImage;
+
 public class plant_info extends AppCompatActivity {
 
     @Override
@@ -32,7 +34,14 @@ public class plant_info extends AppCompatActivity {
 
         //Update image based on plant
         ImageView plantImage = (ImageView) findViewById(R.id.plantImage);
-        Bitmap plantBitmap = BitmapFactory.decodeResource(getResources(), getResources().getIdentifier(plant + "/" + name + ".png", "mipmap", this.getPackageName()));
+        int plantImageId = getPlantImage(this, name);
+        Bitmap plantBitmap;
+        if(plantImageId > 0) {
+            plantBitmap = BitmapFactory.decodeResource(getResources(), getPlantImage(this, name));
+        }
+        else {
+            plantBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.default_plant);
+        }
         plantImage.setImageBitmap(plantBitmap);
 
         //Update displayed plant name based on plant
