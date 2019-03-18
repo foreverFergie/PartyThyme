@@ -17,7 +17,7 @@ public class plant_info_add extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_plant_info);
+        setContentView(R.layout.activity_plant_info_add);
 
         Bundle bundle = this.getIntent().getExtras();
         //Get what plant this activity will be used for

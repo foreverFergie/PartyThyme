@@ -9,16 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".RealSearch"></activity>
         <activity android:name=".SignIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".search"
-            android:label="@string/title_activity_search"
+            android:label="search"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".help"
@@ -36,10 +38,15 @@
             android:name=".plant_info"
             android:label="@string/title_activity_plant_info"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity"
-
+        <activity
+            android:name=".MainActivity"
             android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"/>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".plant_info_add"
+            android:label="@string/title_activity_plant_info_add"
+            android:theme="@style/AppTheme.NoActionBar" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

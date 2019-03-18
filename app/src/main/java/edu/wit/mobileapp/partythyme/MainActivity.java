@@ -1,5 +1,6 @@
 package edu.wit.mobileapp.partythyme;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
@@ -48,10 +50,6 @@ public class MainActivity extends AppCompatActivity {
             plant.image = defaultImage;
             plant.name = "plant" + i;
             plants.add(plant);
-
-
-
-
         }
 
         plantItemAdapter adapter;
@@ -61,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(manager);
         recyclerView.setAdapter(adapter);
 
+        ImageView addAPlant = (ImageView) findViewById(R.id.mainactivity_add_btn);
+        addAPlant.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent intent = new Intent(MainActivity.this, RealSearch.class);
+                startActivity(intent);
+            }
+        });
 
         //Toolbar toolbar =(Toolbar)findViewById(R.id.toolbar);
 

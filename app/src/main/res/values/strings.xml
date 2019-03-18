@@ -8,6 +8,7 @@
     <string name="title_activity_result_page">result_page</string>
     <string name="title_activity_help">help</string>
     <string name="title_activity_search">search</string>
+    <string name="title_activity_plant_info_add">plant_info_add</string>
     <string name="expand_calendar">Expand Calendar</string>
     <string name="care_calendar">Care Calendar</string>
     <string name="my_plants">My Plants</string>
@@ -16,6 +17,8 @@
     <string name="add_to_my_plants">Add To My Plants</string>
     <string name="signed_in">Signed in as: %s</string>
     <string name="signed_out">Signed out</string>
+    <string name="search_label">Search</string>
+    <string name="search_hint">Search For A Plant</string>
 
     <string name="server_client_id">758752525047-coj5a0qivi0nrn8gc83n4p069ak01a3r.apps.googleusercontent.com</string>
 </resources>
