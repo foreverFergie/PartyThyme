@@ -15,10 +15,11 @@
     <string name="plant_fact">Plant Fact</string>
     <string name="add_button">add_button</string>
     <string name="add_to_my_plants">Add To My Plants</string>
-    <string name="signed_in">Signed in as: %s</string>
+    <string name="signed_in">Signed in as:</string>
     <string name="signed_out">Signed out</string>
     <string name="search_label">Search</string>
     <string name="search_hint">Search For A Plant</string>
+    <string name="sign_out">Sign Out</string>
 
     <string name="server_client_id">758752525047-coj5a0qivi0nrn8gc83n4p069ak01a3r.apps.googleusercontent.com</string>
 </resources>

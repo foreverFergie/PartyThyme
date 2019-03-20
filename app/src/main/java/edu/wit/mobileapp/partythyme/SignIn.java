@@ -1,6 +1,7 @@
 package edu.wit.mobileapp.partythyme;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -14,12 +15,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 public class SignIn extends AppCompatActivity implements View.OnClickListener {
 
     private GoogleSignInClient signInClient;
     private TextView signInStatus;
+    private TextView userName;
     private static final int RC_SIGN_IN = 9001;
 
     @Override
@@ -31,6 +34,8 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
 
 
         signInStatus = findViewById(R.id.sign_in_status);
+        userName=findViewById(R.id.userName);
+        findViewById(R.id.sign_out_button).setOnClickListener(this);
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
 
@@ -51,11 +56,13 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
     private void updateUI(GoogleSignInAccount account) {
 
         final GoogleSignInAccount accounSend = account;
-
+        Button mainPage = (Button)findViewById(R.id.continueToMain);
         if (account != null) {
-            signInStatus.setText(getString(R.string.signed_in, account.getDisplayName()));
-
-            Button mainPage = (Button)findViewById(R.id.continueToMain);
+            signInStatus.setText(getString(R.string.signed_in));
+            userName.setText(account.getDisplayName());
+            mainPage.setVisibility(View.VISIBLE);
+            findViewById(R.id.sign_in_button).setVisibility(View.GONE);
+            findViewById(R.id.sign_out_button).setVisibility(View.VISIBLE);
 
             mainPage.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View v){
@@ -74,6 +81,10 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
 
         } else {
             signInStatus.setText(getString(R.string.signed_out));
+            userName.setText("");
+            mainPage.setVisibility(View.GONE);
+            findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
+            findViewById(R.id.sign_out_button).setVisibility(View.GONE);
         }
 
 
@@ -82,6 +93,15 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
     private void signIn() {
         Intent signInIntent = signInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    private void signOut(){
+        signInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                updateUI(null);
+            }
+        });
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -109,6 +129,9 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
         switch(v.getId()){
             case R.id.sign_in_button:
                 signIn();
+                break;
+            case R.id.sign_out_button:
+                signOut();
                 break;
 
         }

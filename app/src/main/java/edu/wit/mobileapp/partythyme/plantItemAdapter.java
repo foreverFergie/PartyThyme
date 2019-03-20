@@ -24,21 +24,22 @@ public class plantItemAdapter extends RecyclerView.Adapter<plantItemAdapter.plan
     public static class plantViewHolder extends RecyclerView.ViewHolder  {
         public ImageView image;
         public TextView name;
-        public Spinner spinner;
+        //public Spinner spinner;
         public plantViewHolder(View v){
             super(v);
             image=(ImageView)v.findViewById(R.id.plant);
             name=(TextView)v.findViewById(R.id.plant_name);
-            spinner=(Spinner) v.findViewById(R.id.spinner);
+            //spinner=(Spinner) v.findViewById(R.id.spinner);
 
         }
 
     }
 
 
-    public plantItemAdapter(List<plant_temp> plants,List<String> dropdown,Context context){
+
+    public plantItemAdapter(List<plant_temp> plants,Context context){
        this.plants=plants;
-       actions=dropdown;
+       //actions=dropdown;
        this.context=context;
     }
 
@@ -53,9 +54,9 @@ public class plantItemAdapter extends RecyclerView.Adapter<plantItemAdapter.plan
     public void onBindViewHolder(@NonNull plantViewHolder pvh, int i) {
         pvh.image.setImageBitmap(plants.get(pvh.getAdapterPosition()).image);
         pvh.name.setText(plants.get(pvh.getAdapterPosition()).name);
-        ArrayAdapter<String> dropDown = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, actions);
+        //ArrayAdapter<String> dropDown = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, actions);
 
-        pvh.spinner.setAdapter(dropDown);
+        //pvh.spinner.setAdapter(dropDown);
 
 
     }

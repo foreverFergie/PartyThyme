@@ -9,6 +9,7 @@ public class Plant {
 
     public Bitmap image;
     public String name;
+    public String nickName;
     boolean annual;
     boolean biennial;
     boolean perrenial;
@@ -31,13 +32,14 @@ public class Plant {
     boolean landscaping;
     String hardinessZone;
 
-    public Plant(String n, Context c){
-        name = n;
+    public Plant(String type, Context c){
+
+        this.name=type;
 
         DatabaseHelper myDb = new DatabaseHelper(c);
         String[] columns = null;
         String where = "name = ?";
-        String[] where_args = {name};
+        String[] where_args = {type};
         String group_by = null;
         String having = null;
         String order_by = "name";

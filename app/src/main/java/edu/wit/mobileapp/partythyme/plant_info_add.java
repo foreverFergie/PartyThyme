@@ -23,7 +23,7 @@ public class plant_info_add extends AppCompatActivity {
         Bundle bundle = this.getIntent().getExtras();
         //Get what plant this activity will be used for
         String name = bundle.getString("name");
-        Plant plant = new Plant(name, this);
+        Plant plant = new Plant(name,this);
 
         //Update image based on plant
         ImageView plantImage = (ImageView) findViewById(R.id.plantImage);
