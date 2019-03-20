@@ -66,7 +66,8 @@
             android:textSize="18sp"
             android:fontFamily="sans-serif-smallcaps"
             android:textColor="@color/colorPrimaryDark"
-            android:background="@color/secondAccent"/>
+            android:background="@color/secondAccent"
+            />
 
     </LinearLayout>
 

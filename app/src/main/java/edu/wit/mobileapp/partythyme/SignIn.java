@@ -5,8 +5,10 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -35,7 +37,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
 
         signInStatus = findViewById(R.id.sign_in_status);
         userName=findViewById(R.id.userName);
-        findViewById(R.id.sign_out_button).setOnClickListener(this);
+        //findViewById(R.id.sign_out_button).setOnClickListener(this);
 
         findViewById(R.id.sign_in_button).setOnClickListener(this);
 
@@ -43,6 +45,14 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
 
         signInClient = GoogleSignIn.getClient(this, gso);
 
+        Button goToMain = (Button) findViewById(R.id.continueToMain);
+        goToMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignIn.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -82,7 +92,7 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
         } else {
             signInStatus.setText(getString(R.string.signed_out));
             userName.setText("");
-            mainPage.setVisibility(View.GONE);
+            //mainPage.setVisibility(View.GONE);
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
             findViewById(R.id.sign_out_button).setVisibility(View.GONE);
         }
@@ -124,7 +134,6 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
         }
     }
 
-
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.sign_in_button:
@@ -135,8 +144,5 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
                 break;
 
         }
-
     }
-
-
 }

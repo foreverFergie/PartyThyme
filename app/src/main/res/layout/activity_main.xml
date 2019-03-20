@@ -220,5 +220,11 @@
         android:textColor="@color/colorPrimaryDark"
         android:textSize="14sp" />
 
+        <ImageView
+            android:id="@+id/mainactivity_add_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="109dp"
+            android:visibility="visible"
+            app:srcCompat="@drawable/add_button" />
 
 </LinearLayout>
