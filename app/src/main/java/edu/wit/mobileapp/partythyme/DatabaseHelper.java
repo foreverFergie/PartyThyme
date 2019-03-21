@@ -1,6 +1,7 @@
 package edu.wit.mobileapp.partythyme;
 
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
@@ -31,6 +32,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         this.mycontext=context;
         DATABASE_PATH = "/data/data/" + mycontext.getApplicationContext().getPackageName() + "/databases/";
         DATABASE_NAME = "plants.db";
+
+        File dir = new File(DATABASE_PATH);
+        if(!dir.exists()){
+            dir.mkdir();
+        }
 
         boolean dbExists = checkDatabaseExists();
         if(dbExists){
