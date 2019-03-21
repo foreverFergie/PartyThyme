@@ -7,7 +7,10 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,6 +27,9 @@ public class RealSearch extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_real_search);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         Context context = this;
 
@@ -95,4 +101,33 @@ public class RealSearch extends AppCompatActivity {
     public static int getPlantImage(Context context, String name){
         return context.getResources().getIdentifier(name.toLowerCase(), "drawable", context.getPackageName());
     }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_bar,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.action_help:
+                Intent settingsPage =  new Intent();
+                settingsPage.setClass(RealSearch.this,help.class);
+                startActivity(settingsPage);
+                return true;
+            case R.id.action_home:
+                Intent homePage = new Intent();
+                homePage.setClass(RealSearch.this,MainActivity.class);
+                startActivity(homePage);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+    }
+
 }
