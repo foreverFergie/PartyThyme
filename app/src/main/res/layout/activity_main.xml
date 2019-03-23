@@ -192,9 +192,10 @@
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
-        android:layout_height="219dp"
+        android:layout_height="wrap_content"
         android:background="@color/colorAccent"
         android:visibility="visible"
+        android:layout_weight="6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -218,13 +219,8 @@
         android:fontFamily="sans-serif-smallcaps"
         android:text="@string/expand_calendar"
         android:textColor="@color/colorPrimaryDark"
+        android:layout_weight="0"
         android:textSize="14sp" />
 
-        <ImageView
-            android:id="@+id/mainactivity_add_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="109dp"
-            android:visibility="visible"
-            app:srcCompat="@drawable/add_button" />
 
 </LinearLayout>

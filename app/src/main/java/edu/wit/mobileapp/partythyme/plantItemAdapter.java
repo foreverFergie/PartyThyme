@@ -5,11 +5,13 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -19,7 +21,7 @@ import java.util.List;
 public class plantItemAdapter extends RecyclerView.Adapter<plantItemAdapter.plantViewHolder>{
 
     private List<plant_temp> plants;
-    private static List<String> actions;
+    //private static List<String> actions;
     private Context context;
     public static class plantViewHolder extends RecyclerView.ViewHolder  {
         public ImageView image;
@@ -58,6 +60,14 @@ public class plantItemAdapter extends RecyclerView.Adapter<plantItemAdapter.plan
 
         //pvh.spinner.setAdapter(dropDown);
 
+
+    }
+
+    public void showPopup(View v){
+        PopupMenu popup = new PopupMenu(context,v);
+        MenuInflater inflater = popup.getMenuInflater();
+        inflater.inflate(R.menu.plant_popup,popup.getMenu());
+        popup.show();
 
     }
 

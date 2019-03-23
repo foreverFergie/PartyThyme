@@ -21,5 +21,8 @@
     <string name="search_hint">Search For A Plant</string>
     <string name="sign_out">Sign Out</string>
 
-    <string name="server_client_id">758752525047-coj5a0qivi0nrn8gc83n4p069ak01a3r.apps.googleusercontent.com</string>
+    <string name="server_client_id">758752525047-0g1fojfa64m8j1feimc7obgs1bmfeo0g.apps.googleusercontent.com</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
