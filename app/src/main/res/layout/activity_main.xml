@@ -41,10 +41,12 @@
 
             app:layout_constraintVertical_bias="0.014" />
 
-        <SearchView
+        <Button
+            android:id="@+id/view_full_list_btn"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-             />
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="View Larger List" />
 
     </LinearLayout>
 
@@ -102,10 +104,7 @@
                 android:fadingEdge="horizontal"
                 android:orientation="horizontal"
                 android:scrollbars="none"
-                android:visibility="visible">
-
-
-            </android.support.v7.widget.RecyclerView>
+                android:visibility="visible" />
         </RelativeLayout>
 
 

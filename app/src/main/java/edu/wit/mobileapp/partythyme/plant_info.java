@@ -1,5 +1,7 @@
 package edu.wit.mobileapp.partythyme;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
@@ -8,8 +10,10 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -29,8 +33,9 @@ public class plant_info extends AppCompatActivity {
 
         Bundle bundle = this.getIntent().getExtras();
         //Get what plant this activity will be used for
-        String name = bundle.getString("name");
-        Plant plant = new Plant(name, this);
+        final String name = bundle.getString("name");
+        final String nick = bundle.getString("nick");
+        final Plant plant = new Plant(name, this);
 
         //Update image based on plant
         ImageView plantImage = (ImageView) findViewById(R.id.plantImage);
@@ -72,7 +77,24 @@ public class plant_info extends AppCompatActivity {
         adapter.add("Can be used for landscaping: " + boolToYesOrNo(plant.landscaping));
         adapter.add("USDA Hardiness Zone: " + plant.hardinessZone);
         plantFacts.setAdapter(adapter);
+
+        Button removePlant = (Button) findViewById(R.id.removePlantBtn);
+        final Context c = this;
+        removePlant.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PlantFileHelper plantFileHelper = new PlantFileHelper(c);
+                boolean didIRemove = plantFileHelper.removePlant(name, nick);
+                Log.v("myApp", "Removed Plant Status: " + didIRemove);
+
+                Intent intent = new Intent(plant_info.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
+
 
     private String boolToYesOrNo(boolean b){
         if(b){

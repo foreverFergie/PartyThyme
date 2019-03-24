@@ -4,8 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,16 +15,22 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.File;
+import java.io.FileOutputStream;
+
 public class plant_info_add extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_info_add);
+        Context mContext = getApplicationContext();
+
+        final String filename = "/data/data/" + this.getApplicationContext().getPackageName() + "/files/MyPlants.txt";
 
         Bundle bundle = this.getIntent().getExtras();
         //Get what plant this activity will be used for
-        String name = bundle.getString("name");
+        final String name = bundle.getString("name");
         Plant plant = new Plant(name,this);
 
         //Update image based on plant
@@ -72,6 +80,17 @@ public class plant_info_add extends AppCompatActivity {
             public void onClick(View v) {
                 //TO DO - Bring up menu where you can add nickname and calendar lifespan...
                 //Add plant to my plants
+                FileOutputStream outputStream;
+                try{
+                    outputStream = new FileOutputStream(filename, true);
+                    String nameAndNickName = name + "," + name + "\n";
+                    outputStream.write(nameAndNickName.getBytes());
+                    outputStream.close();
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
 
                 //Go back to activity_main
                 Intent intent = new Intent();
