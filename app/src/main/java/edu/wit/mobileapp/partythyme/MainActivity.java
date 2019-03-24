@@ -82,18 +82,18 @@ public class MainActivity extends AppCompatActivity {
             while((line = bufferedReader.readLine()) != null){
                 plant_temp plant = new plant_temp();
                 //Get nickname from line
-                String pNick = "";
+                String pName = "";
                 int i = 0;
                 sb.append(line);
                 while(sb.toString().charAt(i) != ','){
-                    pNick = pNick + sb.toString().charAt(i);
+                    pName = pName+ sb.toString().charAt(i);
                     i++;
                 }
                 i++; //Move i past the comma
-                String pName = "";
+                String pNick = "";
                 //Get plant name from line
                 while(i < sb.toString().length()){
-                    pName = pName + sb.toString().charAt(i);
+                    pNick = pNick + sb.toString().charAt(i);
                     i++;
                 }
                 Log.v("plant Name", pName);

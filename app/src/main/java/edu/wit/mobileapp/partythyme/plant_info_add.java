@@ -1,16 +1,20 @@
 package edu.wit.mobileapp.partythyme;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,7 +28,7 @@ public class plant_info_add extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_info_add);
-        Context mContext = getApplicationContext();
+        final Context mContext = getApplicationContext();
 
         final String filename = "/data/data/" + this.getApplicationContext().getPackageName() + "/files/MyPlants.txt";
 
@@ -74,31 +78,46 @@ public class plant_info_add extends AppCompatActivity {
         adapter.add("USDA Hardiness Zone: " + plant.hardinessZone);
         plantFacts.setAdapter(adapter);
 
+
         Button addToPlants = (Button) findViewById(R.id.addToMyPlantsBtn);
         addToPlants.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TO DO - Bring up menu where you can add nickname and calendar lifespan...
-                //Add plant to my plants
-                FileOutputStream outputStream;
-                try{
-                    outputStream = new FileOutputStream(filename, true);
-                    String nameAndNickName = name + "," + name + "\n";
-                    outputStream.write(nameAndNickName.getBytes());
-                    outputStream.close();
-                }
-                catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
+                //Custom Dialog
+                final Dialog dialog = new Dialog(plant_info_add.this);
+                dialog.setContentView(R.layout.customize_plant);
+                //dialog.setTitle("Customize Plant");
 
-                //Go back to activity_main
-                Intent intent = new Intent();
-                intent.setClass(plant_info_add.this, MainActivity.class);
-                //Don't think we need to send anything to the main page since it will just
-                //grab its information from files
-                //Bundle bundle = new Bundle();
-                startActivity(intent);
+                //Set the custom dialog components
+                Button finish = (Button) dialog.findViewById(R.id.add_plant);
+                final EditText nickName = (EditText) dialog.findViewById(R.id.nickname);
+                nickName.setText(name);
+                finish.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FileOutputStream outputStream;
+                        try{
+                            outputStream = new FileOutputStream(filename, true);
+                            String nameAndNickName = name + "," + nickName.getText() + "\n";
+                            outputStream.write(nameAndNickName.getBytes());
+                            outputStream.close();
+                        }
+                        catch (Exception e)
+                        {
+                            e.printStackTrace();
+                        }
+
+                        dialog.dismiss();
+                        //Go back to activity_main
+                        Intent intent = new Intent();
+                        intent.setClass(plant_info_add.this, MainActivity.class);
+                        //Don't think we need to send anything to the main page since it will just
+                        //grab its information from files
+                        //Bundle bundle = new Bundle();
+                        startActivity(intent);
+                    }
+                });
+                dialog.show();
             }
         });
     }

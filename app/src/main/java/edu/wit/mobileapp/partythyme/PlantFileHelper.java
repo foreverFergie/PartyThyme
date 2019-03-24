@@ -25,7 +25,7 @@ public class PlantFileHelper {
             BufferedReader reader = new BufferedReader(new FileReader(inputFile));
             BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
 
-            String lineToRemove = pName + "," + pNick;
+            String lineToRemove = pNick + "," + pName;
             String currentLine;
             Log.v("myApp", lineToRemove);
 
