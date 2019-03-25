@@ -39,10 +39,10 @@ public class plant_info extends AppCompatActivity {
 
         //Update image based on plant
         ImageView plantImage = (ImageView) findViewById(R.id.plantImage);
-        int plantImageId = getPlantImage(this, name);
+        int plantImageId = getPlantImage(this, nick); //I swapped them in an earlier file. Easier this way
         Bitmap plantBitmap;
         if(plantImageId > 0) {
-            plantBitmap = BitmapFactory.decodeResource(getResources(), getPlantImage(this, name));
+            plantBitmap = BitmapFactory.decodeResource(getResources(), plantImageId);
         }
         else {
             plantBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.default_plant);

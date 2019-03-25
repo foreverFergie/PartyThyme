@@ -64,8 +64,9 @@ public class result_page extends AppCompatActivity {
                 Log.v("plant Name", pName);
 
 
-                plant.nick = pNick;
-                plant.name = pName;
+                //Messed this up and this is a simple quick fix
+                plant.nick = pName;
+                plant.name = pNick;
 
 
                 int plantImage = getPlantImage(this, pName);
