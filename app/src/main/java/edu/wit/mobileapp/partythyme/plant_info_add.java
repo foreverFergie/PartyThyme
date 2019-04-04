@@ -30,7 +30,7 @@ public class plant_info_add extends AppCompatActivity {
         setContentView(R.layout.activity_plant_info_add);
         final Context mContext = getApplicationContext();
 
-        final String filename = "/data/data/" + this.getApplicationContext().getPackageName() + "/files/MyPlants.txt";
+        final String filename = "/data/data/" + this.getApplicationContext().getPackageName() + "/MyPlants.txt";
 
         Bundle bundle = this.getIntent().getExtras();
         //Get what plant this activity will be used for

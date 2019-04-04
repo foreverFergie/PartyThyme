@@ -29,7 +29,7 @@ public class result_page extends AppCompatActivity {
         //Toolbar toolbar = findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
 
-        String filename = "/data/data/" + this.getApplicationContext().getPackageName() + "/files/MyPlants.txt";
+        String filename = "/data/data/" + this.getApplicationContext().getPackageName() + "/MyPlants.txt";
         List<ListItemWithNick> list = new ArrayList<ListItemWithNick>();
         FileInputStream fis;
         InputStreamReader isr;

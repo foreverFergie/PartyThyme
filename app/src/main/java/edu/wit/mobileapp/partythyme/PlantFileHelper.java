@@ -14,7 +14,7 @@ public class PlantFileHelper {
     String filename;
     public PlantFileHelper(Context context)
     {
-        filename = "/data/data/" + context.getApplicationContext().getPackageName() + "/files/MyPlants.txt";
+        filename = "/data/data/" + context.getApplicationContext().getPackageName() + "/MyPlants.txt";
     }
 
     public boolean removePlant(String pName, String pNick){

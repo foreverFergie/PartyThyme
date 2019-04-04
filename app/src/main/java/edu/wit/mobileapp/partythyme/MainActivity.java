@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        String filename = "/data/data/" + this.getApplicationContext().getPackageName() + "/files/MyPlants.txt";
+        String filename = "/data/data/" + this.getApplicationContext().getPackageName() + "/MyPlants.txt";
 
         Log.v("filename", filename);
 
