@@ -146,8 +146,8 @@
 
     <TextView
         android:id="@+id/plantFact"
-        android:layout_width="366dp"
-        android:layout_height="52dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="7dp"
         android:layout_marginLeft="7dp"
         android:layout_marginTop="5dp"
