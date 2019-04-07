@@ -38,6 +38,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,6 +72,30 @@ public class MainActivity extends AppCompatActivity {
         InputStreamReader isr;
         BufferedReader bufferedReader;
         context = getApplicationContext();
+
+        TextView plantFact = (TextView) findViewById(R.id.plantFact);
+        String[] possibleFacts = {
+                "Brazil is named after a tree!",
+                "Over 85% of plant life is found in the ocean!",
+                "Bananas contain a natural chemical which can make people feel happy!",
+                "The Amazon rainforest produces half the world's oxygen supply!",
+                "Caffeine serves the function of a pesticide in coffee plants!",
+                "Apple is 25% air, that's why it floats on water!",
+                "The tears during cutting an onion are caused by sulfuric acid!",
+                "The first potatoes were cultivated in Peru about 7,000 years ago!",
+                "The first type of aspirin, painkiller and fever reducer came from the tree bark of a willow tree!",
+                "Peaches, Pears, apricots, quinces, strawberries, and apples are members of the rose family!",
+                "Around 2000 different types of plants are used by humans to make food!",
+                "Cabbage has 91% water content!",
+                "Banana is an Arabic word for fingers!",
+                "The California redwood (coast redwood and giant sequoia) are the tallest and largest living organism in the world!",
+                "Carrots were originally purple in color!",
+                "Oak trees are struck by lightning more than any other tree!",
+                "There are over 300,000 identified plant species!",
+                "Vanilla flavoring comes from the pod of an orchid, Vanilla planifolia!"
+        };
+        int index = (int)(Math.random() * possibleFacts.length - 1);
+        plantFact.setText(possibleFacts[index]);
 
         try{
             fis = new FileInputStream(new File(filename));
