@@ -130,7 +130,7 @@
 
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/plantFactTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="7dp"
@@ -145,7 +145,7 @@
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/plantFact"
         android:layout_width="366dp"
         android:layout_height="52dp"
         android:layout_marginStart="7dp"
@@ -158,7 +158,7 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/plantFactTitle" />
 
     <View
         android:id="@+id/divider2"
@@ -173,7 +173,7 @@
         android:background="?android:attr/listDivider"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/plantFact"
         tools:background="@color/colorPrimary" />
 
     <TextView
