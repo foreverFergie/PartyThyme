@@ -20,6 +20,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -35,14 +36,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     DatabaseHelper myDb;
     private Context context;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,7 +146,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //Toolbar toolbar =(Toolbar)findViewById(R.id.toolbar);
+
+        Button calendarPage=(Button)findViewById(R.id.expandCalendar);
+        calendarPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,Calendar.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+    }
+
+
+    private void setCalenderWeek(){
+        Date today = new Date();
+
 
 
     }
