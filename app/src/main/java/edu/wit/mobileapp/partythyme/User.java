@@ -13,7 +13,7 @@ public class User {
         this.username=username;
         this.email=email;
 
-        //crreate database?
+        //create database?
 
 
     }
