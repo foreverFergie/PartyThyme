@@ -96,6 +96,7 @@ public class plant_info extends AppCompatActivity {
 
 
 
+
     private String boolToYesOrNo(boolean b){
         if(b){
             return "Yes";

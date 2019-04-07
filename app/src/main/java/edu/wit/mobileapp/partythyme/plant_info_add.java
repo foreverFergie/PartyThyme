@@ -130,6 +130,18 @@ public class plant_info_add extends AppCompatActivity {
     }
 
     public static int getPlantImage(Context context, String name){
-        return context.getResources().getIdentifier(name.toLowerCase(), "drawable", context.getPackageName());
+        String nameNoSpaces = "";
+        for(int i = 0; i < name.length(); i++)
+        {
+            if (name.charAt(i) == ' '){
+                nameNoSpaces = nameNoSpaces + "_";
+            }
+            else
+            {
+                nameNoSpaces = nameNoSpaces + name.charAt(i);
+            }
+        }
+        nameNoSpaces = nameNoSpaces.toLowerCase();
+        return context.getResources().getIdentifier(nameNoSpaces, "drawable", context.getPackageName());
     }
 }
