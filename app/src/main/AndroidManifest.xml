@@ -29,10 +29,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".search"
-            android:label="search"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".help"
             android:label="@string/title_activity_help"
             android:theme="@style/AppTheme.NoActionBar" />

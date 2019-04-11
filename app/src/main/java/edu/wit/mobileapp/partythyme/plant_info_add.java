@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.util.Calendar;
 
 public class plant_info_add extends AppCompatActivity {
 
@@ -35,7 +37,7 @@ public class plant_info_add extends AppCompatActivity {
         Bundle bundle = this.getIntent().getExtras();
         //Get what plant this activity will be used for
         final String name = bundle.getString("name");
-        Plant plant = new Plant(name,this);
+        final Plant plant = new Plant(name,this);
 
         //Update image based on plant
         ImageView plantImage = (ImageView) findViewById(R.id.plantImage);
@@ -107,6 +109,9 @@ public class plant_info_add extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
+
+                        setCalenderEvents(nickName.getText().toString());
+
                         dialog.dismiss();
                         //Go back to activity_main
                         Intent intent = new Intent();
@@ -120,6 +125,15 @@ public class plant_info_add extends AppCompatActivity {
                 dialog.show();
             }
         });
+    }
+
+    private void setCalenderEvents(String nickName){
+        CalendarView calendarView=(CalendarView)findViewById(R.id.calendarView);
+        long date=calendarView.getDate();
+
+        Calendar b = Calendar.getInstance();
+
+
     }
 
     private String boolToYesOrNo(boolean b){

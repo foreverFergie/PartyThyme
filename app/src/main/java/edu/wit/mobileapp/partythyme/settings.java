@@ -10,7 +10,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class settings extends AppCompatActivity {
+
+    private List<Integer> cal= new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +25,24 @@ public class settings extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        popCalArray();
 
+
+
+
+
+    }
+
+    private void popCalArray(){
+        for(int i=21;i<42;i++){
+            cal.add(i);
+        }
+        for(int j=50;j<90;j+=10){
+            cal.add(j);
+        }
+        for(int k=90;k<365;k+=30){
+            cal.add(k);
+        }
 
     }
 

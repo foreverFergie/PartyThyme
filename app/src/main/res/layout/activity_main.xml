@@ -44,11 +44,11 @@
         <Button
             android:id="@+id/view_full_list_btn"
             style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:fontFamily="@font/lemonada_light"
-            android:text="View Larger List"
+            android:text="@string/view_larger_list"
             android:textAlignment="textEnd"
             android:textColor="@color/colorPrimary"
             android:textSize="18sp"
@@ -78,7 +78,8 @@
                 android:layout_width="109dp"
                 android:layout_height="109dp"
                 android:visibility="visible"
-                app:srcCompat="@drawable/add_button" />
+                app:srcCompat="@drawable/add_button"
+                android:contentDescription="TODO" />
 
             <TextView
                 android:id="@+id/textView5"
@@ -87,7 +88,7 @@
                 android:layout_marginLeft="3dp"
                 android:layout_marginTop="95dp"
                 android:fontFamily="sans-serif-smallcaps"
-                android:text="Add a Plant"
+                android:text="@string/add_a_plant"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -176,179 +177,54 @@
         app:layout_constraintTop_toBottomOf="@+id/plantFact"
         tools:background="@color/colorPrimary" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="7dp"
-        android:layout_marginLeft="7dp"
-        android:layout_marginTop="5dp"
-        android:fontFamily="@font/pacifico"
-        android:text="@string/care_calendar"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider2" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:layout_weight="6"
         android:background="@color/background_background"
-        android:gravity="center"
+        android:gravity="center|top"
         android:orientation="vertical"
         android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
 
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="2dp"
-            app:cardElevation="2dp">
+            android:layout_gravity="left"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/pacifico"
+            android:text="@string/care_calendar"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/day1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/lemonada_light"
-                    android:padding="3dp"
-                    android:text="TextView"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
+        <CalendarView
+            android:id="@+id/calendarView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="2dp"
-            app:cardElevation="2dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/day2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/lemonada_light"
-                    android:padding="3dp"
-                    android:text="TextView"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="2dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/day3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/lemonada_light"
-                    android:padding="3dp"
-                    android:text="TextView"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="2dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/day4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/lemonada_light"
-                    android:padding="3dp"
-                    android:text="TextView"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="2dp"
-            android:layout_marginRight="2dp"
-            android:layout_marginBottom="2dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/day5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/lemonada_light"
-                    android:padding="3dp"
-                    android:text="TextView"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-        </android.support.v7.widget.CardView>
+            android:layout_marginTop="-25dp" />
     </LinearLayout>
 
 
-    <Button
-        android:id="@+id/expandCalendar"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_weight="0"
-        android:background="@color/secondAccent"
-        android:fontFamily="sans-serif-smallcaps"
-        android:text="@string/expand_calendar"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="14sp" />
+    <!--<Button-->
+        <!--android:id="@+id/expandCalendar"-->
+        <!--style="@style/Widget.MaterialComponents.Button.TextButton"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="right"-->
+        <!--android:layout_weight="0"-->
+        <!--android:background="@color/secondAccent"-->
+        <!--android:fontFamily="sans-serif-smallcaps"-->
+        <!--android:text="@string/expand_calendar"-->
+        <!--android:textColor="@color/colorPrimaryDark"-->
+        <!--android:textSize="14sp" />-->
 
 
 </LinearLayout>

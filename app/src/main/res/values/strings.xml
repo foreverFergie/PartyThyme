@@ -26,4 +26,6 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="view_larger_list">View Larger List</string>
+    <string name="add_a_plant">Add a Plant</string>
 </resources>

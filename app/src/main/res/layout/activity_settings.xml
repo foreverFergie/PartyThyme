@@ -21,6 +21,41 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/calendarSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/pacifico"
+            android:text="Calendar Settings"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/calendarLifespan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lemonada_light"
+                android:padding="15dp"
+                android:text="Calendar Lifespan:"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp" />
+
+            <Spinner
+                android:id="@+id/spinner5"
+                android:layout_width="70dp"
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="72dp" />
+        </RelativeLayout>
+
+        <TextView
             android:id="@+id/settingsTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
