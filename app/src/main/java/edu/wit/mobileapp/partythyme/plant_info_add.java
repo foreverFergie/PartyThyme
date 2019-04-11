@@ -110,7 +110,7 @@ public class plant_info_add extends AppCompatActivity {
                         }
 
 
-                        setCalenderEvents(nickName.getText().toString());
+                        //setCalenderEvents(nickName.getText().toString());
 
                         dialog.dismiss();
                         //Go back to activity_main

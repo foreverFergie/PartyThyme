@@ -49,6 +49,13 @@ public class SignIn extends AppCompatActivity implements View.OnClickListener {
 
         findViewById(R.id.continueToMain).setOnClickListener(this);
 
+        DatabaseHelper db = new DatabaseHelper(this);
+        try{
+            db.createDatabase();
+        }catch(Exception ignored){
+            //Ignore problem. May occur again if user tries to add a plant
+        }
+
 //        signInStatus = findViewById(R.id.sign_in_status);
 //        userName = findViewById(R.id.userName);
 //
