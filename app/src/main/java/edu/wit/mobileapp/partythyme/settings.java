@@ -2,6 +2,9 @@ package edu.wit.mobileapp.partythyme;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.design.widget.FloatingActionButton;
@@ -26,6 +29,7 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
     //final String filename = this.getFilesDir().getPath() + this.getApplicationContext().getPackageName() + "/settings.txt";
     private List<Integer> cal= new ArrayList<>();
     public int calendarLifespan;
+    private List<String> ringtones=new ArrayList<>();
     private int sel=0;
 
     @Override
@@ -37,12 +41,21 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         Spinner calendar = (Spinner) findViewById(R.id.calendarLife);
-        calendar.setOnItemSelectedListener(this);
+        //calendar.setOnItemSelectedListener(this);
         popCalArray();
+
+        Spinner alarm = (Spinner)findViewById(R.id.alarm);
+        //alarm.setOnItemSelectedListener(this);
+        getRingtones();
 
         ArrayAdapter<Integer> calAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,cal);
         calAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         calendar.setAdapter(calAdapter);
+
+
+        ArrayAdapter<String> alarmAdapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,ringtones);
+        alarmAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        alarm.setAdapter(alarmAdapter);
 
         Switch vibrate=(Switch) findViewById(R.id.vibrate);
         Switch sound=(Switch)findViewById(R.id.sound);
@@ -62,6 +75,19 @@ public class settings extends AppCompatActivity implements AdapterView.OnItemSel
             }
         });
 
+
+    }
+
+    private void getRingtones(){
+        RingtoneManager ringtoneManager=new RingtoneManager(this);
+        ringtoneManager.setType(RingtoneManager.TYPE_ALARM);
+        Cursor alarmCursor = ringtoneManager.getCursor();
+
+        while(!alarmCursor.isAfterLast() && alarmCursor.moveToNext()){
+            //int cur = alarmCursor.getPosition();
+            ringtones.add(alarmCursor.getString(RingtoneManager.TITLE_COLUMN_INDEX));
+        }
+        alarmCursor.close();
 
     }
 

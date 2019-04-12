@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Environment;
+import android.provider.CalendarContract;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -117,7 +118,7 @@ public class plant_info_add extends AppCompatActivity {
                         }
 
 
-                        //setCalenderEvents(nickName.getText().toString());
+                        setCalenderEvents(nickName.getText().toString());
 
                         dialog.dismiss();
                         //Go back to activity_main
@@ -135,10 +136,62 @@ public class plant_info_add extends AppCompatActivity {
     }
 
     private void setCalenderEvents(String nickName){
+
         CalendarView calendarView=(CalendarView)findViewById(R.id.calendarView);
-        //long date=calendarView.getDate();
 
         Calendar b = Calendar.getInstance();
+        int currentMonth=b.get(Calendar.MONTH)+1;
+        int currentDay=b.get(Calendar.DAY_OF_MONTH);
+        int currentYear=b.get(Calendar.YEAR);
+
+        for(int i=0;i<21;i+=3){
+
+            if(currentMonth%2==1 && currentDay<=28){
+                currentDay+=3;
+            }else if(currentMonth%2==1 && currentDay>28){
+                int diff = 31-currentDay;
+
+                currentDay=3-diff;
+                currentMonth++;
+            }else if(currentMonth==2 && currentDay<=25){
+                currentDay+=3;
+            }else if(currentMonth==2 && currentDay>25){
+                int diff = 28-currentDay;
+
+                currentDay=3-diff;
+                currentMonth++;
+            }else if(currentMonth%2==0 && currentDay<=27){
+                currentDay++;
+            }else if(currentMonth!=12 && currentDay>27){
+                int diff = 30-currentDay;
+
+                currentDay=3-diff;
+                currentMonth++;
+            }else{
+                int diff = 30-currentDay;
+
+                currentDay=3-diff;
+                currentMonth++;
+                currentYear++;
+            }
+
+            b.set(currentYear,currentMonth,currentDay);
+
+            Intent intent=new Intent(Intent.ACTION_INSERT)
+                    .setData(CalendarContract.Events.CONTENT_URI)
+                    .putExtra(CalendarContract.Events.DTSTART,b)
+                    .putExtra(CalendarContract.Events.ALL_DAY,1)
+                    .putExtra(CalendarContract.Events.TITLE,"Water your plant "+nickName+"!")
+                    .putExtra(CalendarContract.Events.ALLOWED_REMINDERS,1)
+                    .putExtra(CalendarContract.Events.CALENDAR_ID,4);
+
+
+            startActivity(intent);
+        }
+
+
+
+
 
 
     }
