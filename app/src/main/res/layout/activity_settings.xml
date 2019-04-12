@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
+        android:theme="?attr/actionBarTheme"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     <LinearLayout
@@ -26,8 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/pacifico"
-            android:text="Calendar Settings"
-            android:textAlignment="textStart"
+            android:text="@string/calendar_settings"
             android:textColor="@color/colorPrimary"
             android:textSize="30sp" />
 
@@ -39,20 +39,23 @@
                 android:id="@+id/calendarLifespan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
                 android:fontFamily="@font/lemonada_light"
                 android:padding="15dp"
-                android:text="Calendar Lifespan:"
+                android:text="@string/calendar_lifespan"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
             <Spinner
-                android:id="@+id/spinner5"
-                android:layout_width="70dp"
+                android:id="@+id/calendarLife"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="72dp" />
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:spinnerMode="dropdown" />
         </RelativeLayout>
 
         <TextView
@@ -61,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="@font/pacifico"
-            android:text="Notification Settings"
+            android:text="@string/notification_settings"
             android:textAlignment="center"
             android:textColor="@color/colorPrimary"
             android:textSize="30sp" />
@@ -71,26 +74,29 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/vibrate"
+                android:id="@+id/VibrateTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="60dp"
-                android:layout_toStartOf="@+id/spinner2"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
                 android:fontFamily="@font/lemonada_light"
                 android:padding="15dp"
-                android:text="Vibrate:"
+                android:text="@string/vibrate"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
-            <Spinner
-                android:id="@+id/spinner2"
-                android:layout_width="130dp"
-                android:layout_height="50dp"
+            <Switch
+                android:id="@+id/vibrate"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="72dp"
-                android:spinnerMode="dropdown" />
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:checked="false"
+                android:thumbTint="@color/colorPrimary"
+                tools:checked="false" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -98,25 +104,27 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/sound"
+                android:id="@+id/SoundTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="60dp"
-                android:layout_toStartOf="@+id/spinner3"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
                 android:fontFamily="@font/lemonada_light"
                 android:padding="15dp"
-                android:text="Sound:"
+                android:text="@string/sound"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
-            <Spinner
-                android:id="@+id/spinner3"
-                android:layout_width="130dp"
-                android:layout_height="50dp"
+            <Switch
+                android:id="@+id/sound"
+                android:layout_width="60dp"
+                android:layout_height="40dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="72dp" />
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp"
+                android:thumbTint="@color/colorPrimary" />
+
         </RelativeLayout>
 
         <RelativeLayout
@@ -127,11 +135,11 @@
                 android:id="@+id/Alarm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="60dp"
-                android:layout_toStartOf="@+id/spinner4"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
                 android:fontFamily="@font/lemonada_light"
                 android:padding="15dp"
-                android:text="Alarm:"
+                android:text="@string/alarm"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp" />
 
@@ -141,8 +149,8 @@
                 android:layout_height="50dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="72dp" />
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="20dp" />
         </RelativeLayout>
 
     </LinearLayout>

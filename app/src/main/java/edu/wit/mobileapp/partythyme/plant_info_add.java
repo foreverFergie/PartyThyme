@@ -9,8 +9,11 @@ import android.os.Environment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -30,6 +33,10 @@ public class plant_info_add extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_info_add);
+
+        Toolbar toolbar = findViewById(R.id.plantToolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         final Context mContext = getApplicationContext();
 
         final String filename = "/data/data/" + this.getApplicationContext().getPackageName() + "/MyPlants.txt";
@@ -129,7 +136,7 @@ public class plant_info_add extends AppCompatActivity {
 
     private void setCalenderEvents(String nickName){
         CalendarView calendarView=(CalendarView)findViewById(R.id.calendarView);
-        long date=calendarView.getDate();
+        //long date=calendarView.getDate();
 
         Calendar b = Calendar.getInstance();
 
@@ -157,5 +164,39 @@ public class plant_info_add extends AppCompatActivity {
         }
         nameNoSpaces = nameNoSpaces.toLowerCase();
         return context.getResources().getIdentifier(nameNoSpaces, "drawable", context.getPackageName());
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_bar,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.action_help:
+                Intent settingsPage =  new Intent();
+                settingsPage.setClass(plant_info_add.this,help.class);
+                startActivity(settingsPage);
+                return true;
+
+            case R.id.action_settings:
+                Intent settings = new Intent();
+                settings.setClass(plant_info_add.this,settings.class);
+                startActivity(settings);
+                return true;
+            case R.id.action_home:
+                Intent homePage = new Intent();
+                homePage.setClass(plant_info_add.this,MainActivity.class);
+                startActivity(homePage);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 }

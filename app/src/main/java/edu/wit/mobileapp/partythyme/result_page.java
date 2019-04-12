@@ -9,6 +9,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -26,8 +28,10 @@ public class result_page extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_page);
-        //Toolbar toolbar = findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        Toolbar toolbar = findViewById(R.id.resultToolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
 
         String filename = "/data/data/" + this.getApplicationContext().getPackageName() + "/MyPlants.txt";
         List<ListItemWithNick> list = new ArrayList<ListItemWithNick>();
@@ -138,6 +142,40 @@ public class result_page extends AppCompatActivity {
         }
         nameNoSpaces = nameNoSpaces.toLowerCase();
         return context.getResources().getIdentifier(nameNoSpaces, "drawable", context.getPackageName());
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_bar,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+
+            case R.id.action_help:
+                Intent settingsPage =  new Intent();
+                settingsPage.setClass(result_page.this,help.class);
+                startActivity(settingsPage);
+                return true;
+
+            case R.id.action_settings:
+                Intent settings = new Intent();
+                settings.setClass(result_page.this,settings.class);
+                startActivity(settings);
+                return true;
+            case R.id.action_home:
+                Intent homePage = new Intent();
+                homePage.setClass(result_page.this,MainActivity.class);
+                startActivity(homePage);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 
 }

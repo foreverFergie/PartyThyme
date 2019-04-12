@@ -1,76 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".help">
 
-    <TextView
-        android:layout_width="fill_parent"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/helpToolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Help Page"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="145dp"
-        android:layout_marginStart="145dp"
-        android:textSize="30sp"/>
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme" />
 
     <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="FAQ"
-        android:textSize="20sp"
-        android:layout_marginTop="60dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        />
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="What is Calendar Lifespan?"
-        android:textSize="15sp"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        />
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Calendar lifespan is how long your plant will remain on your calendar before the app automatically removes it. "
-        android:textSize="15sp"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="120dp"
-        />
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Why do you not have thyme as an available plant when the name of your app is Party Thyme?"
-        android:textSize="15sp"
-        android:layout_marginTop="175dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        />
-
-    <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="We forgot. Oh well"
-        android:textSize="15sp"
-        android:layout_marginTop="215dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        />
-
-    <Button
-        android:id="@+id/homeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Home" />
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/pacifico"
+        android:text="Help Page"
+        android:textColor="@color/colorPrimary"
+        android:textSize="30sp" />
 
-</RelativeLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily="@font/lemonada_light"
+        android:text="FAQ"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:padding="5dp"
+        android:text="What is Calendar Lifespan?"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:padding="5dp"
+        android:text="Calendar lifespan is how long your plant will remain on your calendar before the app automatically removes it. "
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:padding="5dp"
+        android:text="Why do you not have thyme as an available plant when the name of your app is Party Thyme?"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:padding="5dp"
+        android:text="We forgot. Oh well"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp" />
+
+</LinearLayout>
