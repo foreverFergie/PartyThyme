@@ -4,7 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.Shape;
+import android.support.annotation.ColorInt;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -214,9 +221,10 @@ public class MainActivity extends AppCompatActivity {
                 }
                 Log.v("dateString", dateString);
                 Date dateRepresentation = (Date)sdf.parse(dateString);
-                ColorDrawable eventColor = new ColorDrawable(getResources().getColor(R.color.colorAccent));
 
-                caldroidFragment.setBackgroundDrawableForDate(eventColor, dateRepresentation);
+                TextDrawable backgnd = new TextDrawable(pNick, this);
+
+                caldroidFragment.setBackgroundDrawableForDate(backgnd, dateRepresentation);
                 caldroidFragment.refreshView();
 
             }
@@ -228,13 +236,6 @@ public class MainActivity extends AppCompatActivity {
         }catch(Exception e){
             e.printStackTrace();
         }
-
-
-
-
-
-
-
     }
 
 
