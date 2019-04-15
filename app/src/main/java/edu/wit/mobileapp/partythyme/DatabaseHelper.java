@@ -67,7 +67,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     private void copydatabase() throws IOException {
-        //Open your local db as the input stream
+        //Open local db as the input stream
         InputStream myinput = mycontext.getAssets().open(DATABASE_NAME);
 
         // Path to the just created empty db

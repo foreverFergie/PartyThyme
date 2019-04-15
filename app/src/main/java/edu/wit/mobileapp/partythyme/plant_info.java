@@ -33,9 +33,9 @@ public class plant_info extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_plant_info);
 
-        Toolbar toolbar = findViewById(R.id.plantViewToolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //Toolbar toolbar = findViewById(R.id.plantViewToolbar);
+        //setSupportActionBar(toolbar);
+        //getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         Bundle bundle = this.getIntent().getExtras();
         //Get what plant this activity will be used for
@@ -66,6 +66,7 @@ public class plant_info extends AppCompatActivity {
         adapter.add("Annual: " + boolToYesOrNo(plant.annual));
         adapter.add("Biennial: " + boolToYesOrNo(plant.biennial));
         adapter.add("Perennial: " + boolToYesOrNo(plant.perrenial));
+        adapter.add("Color: " + plant.color);
         adapter.add("Indoor: " + boolToYesOrNo(plant.indoor));
         adapter.add("Maintenance (1-3): " + plant.maintenance);
         adapter.add("Water Maintenance: " + plant.waterMaintenance);

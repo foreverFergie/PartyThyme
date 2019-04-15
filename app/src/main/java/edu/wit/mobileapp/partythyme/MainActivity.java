@@ -2,11 +2,10 @@ package edu.wit.mobileapp.partythyme;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Environment;
-import android.provider.CalendarContract;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -14,30 +13,23 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
-import org.w3c.dom.Text;
-
+import com.roomorama.caldroid.CaldroidFragment;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import java.util.Random;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -180,7 +172,65 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        CalendarView calendarView = (CalendarView)findViewById(R.id.calendarView);
+        //Calendar - uses caldroid so we can make events appear
+        CaldroidFragment caldroidFragment = new CaldroidFragment();
+        Bundle args = new Bundle();
+        Calendar cal = Calendar.getInstance();
+        args.putInt(CaldroidFragment.MONTH, cal.get(Calendar.MONTH) + 1);
+        args.putInt(CaldroidFragment.YEAR, cal.get(Calendar.YEAR));
+        caldroidFragment.setArguments(args);
+
+        FragmentTransaction t = getSupportFragmentManager().beginTransaction();
+        t.replace(R.id.calendar1, caldroidFragment);
+        t.commit();
+
+
+        //This time its our calendar file
+        filename = "/data/data/" + this.getApplicationContext().getPackageName() + "/calendarPlants.txt";
+        try {
+            fis = new FileInputStream(new File(filename));
+            isr = new InputStreamReader(fis);
+            bufferedReader = new BufferedReader(isr);
+            StringBuilder sb;
+
+            String line;
+            while((line = bufferedReader.readLine()) != null) {
+                sb = new StringBuilder();
+                //Get nickname from line
+                String pNick = "";
+                int i = 0;
+                sb.append(line);
+                while (sb.toString().charAt(i) != ',') {
+                    pNick = pNick + sb.toString().charAt(i);
+                    i++;
+                }
+                i++; //Move i past the comma
+                //Get Date
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+                String dateString = "";
+                while(i < sb.toString().length()){
+                    dateString = dateString + sb.toString().charAt(i);
+                    i++;
+                }
+                Log.v("dateString", dateString);
+                Date dateRepresentation = (Date)sdf.parse(dateString);
+                ColorDrawable eventColor = new ColorDrawable(getResources().getColor(R.color.colorAccent));
+
+                caldroidFragment.setBackgroundDrawableForDate(eventColor, dateRepresentation);
+                caldroidFragment.refreshView();
+
+            }
+            fis.close();
+            isr.close();
+            bufferedReader.close();
+
+
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+
+
 
 
 
@@ -190,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void setCalenderWeek(){
 
-        CalendarView calendar=(CalendarView) findViewById(R.id.calendarView);
+        CalendarView calendar=(CalendarView) findViewById(R.id.calendar1);
 
 
 

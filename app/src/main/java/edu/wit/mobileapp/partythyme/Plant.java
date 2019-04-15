@@ -31,6 +31,7 @@ public class Plant {
     boolean tree;
     boolean landscaping;
     String hardinessZone;
+    int waterNumber;
 
     public Plant(String type, Context c){
 
@@ -66,6 +67,7 @@ public class Plant {
             tree = intToBool(cursor.getInt(cursor.getColumnIndex("TREE")));
             landscaping = intToBool(cursor.getInt(cursor.getColumnIndex("LANDSCAPING")));
             hardinessZone = cursor.getString(cursor.getColumnIndex("HARDINESSZONE"));
+            waterNumber = cursor.getInt(cursor.getColumnIndex("waterNumber"));
         }
     }
 

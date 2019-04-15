@@ -23,10 +23,22 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 public class plant_info_add extends AppCompatActivity {
 
@@ -70,6 +82,7 @@ public class plant_info_add extends AppCompatActivity {
         adapter.add("Annual: " + boolToYesOrNo(plant.annual));
         adapter.add("Biennial: " + boolToYesOrNo(plant.biennial));
         adapter.add("Perennial: " + boolToYesOrNo(plant.perrenial));
+        adapter.add("Color: " + plant.color);
         adapter.add("Indoor: " + boolToYesOrNo(plant.indoor));
         adapter.add("Maintenance (1-3): " + plant.maintenance);
         adapter.add("Water Maintenance: " + plant.waterMaintenance);
@@ -102,32 +115,72 @@ public class plant_info_add extends AppCompatActivity {
                 Button finish = (Button) dialog.findViewById(R.id.add_plant);
                 final EditText nickName = (EditText) dialog.findViewById(R.id.nickname);
                 nickName.setText(name);
+
                 finish.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        FileOutputStream outputStream;
+                        boolean canAdd = true;
                         try{
-                            outputStream = new FileOutputStream(filename, true);
-                            String nameAndNickName = name + "," + nickName.getText() + "\n";
-                            outputStream.write(nameAndNickName.getBytes());
-                            outputStream.close();
-                        }
-                        catch (Exception e)
-                        {
+                            //Check if nickname already exists
+                            FileInputStream fis = new FileInputStream(new File(filename));
+                            InputStreamReader isr = new InputStreamReader(fis);
+                            BufferedReader bufferedReader = new BufferedReader(isr);
+                            StringBuilder sb = new StringBuilder();
+
+                            String line;
+                            while((line = bufferedReader.readLine()) != null) {
+                                //Get nickname from line
+                                String pName = "";
+                                int i = 0;
+                                sb.append(line);
+                                while (sb.toString().charAt(i) != ',') {
+                                    pName = pName + sb.toString().charAt(i);
+                                    i++;
+                                }
+                                i++; //Move i past the comma
+                                String pNick = "";
+                                //Get plant name from line
+                                while (i < sb.toString().length()) {
+                                    pNick = pNick + sb.toString().charAt(i);
+                                    i++;
+                                }
+                                Log.v("plant Name", pName);
+                                if(pNick.equals(nickName.getText().toString())){
+                                    canAdd = false;
+                                }
+                            }
+                        }catch(Exception e){
                             e.printStackTrace();
                         }
 
+                        //If nickname doesnt already exist ok to save plant
+                        if(canAdd) {
+                            try {
+                                FileOutputStream outputStream;
+                                //If nickname doesnt already exist ok to save plant
+                                outputStream = new FileOutputStream(filename, true);
+                                String nameAndNickName = name + "," + nickName.getText() + "\n";
+                                outputStream.write(nameAndNickName.getBytes());
+                                outputStream.close();
 
-                        setCalenderEvents(nickName.getText().toString());
+                                setCalenderEvents(nickName.getText().toString(), plant.waterNumber);
 
-                        dialog.dismiss();
-                        //Go back to activity_main
-                        Intent intent = new Intent();
-                        intent.setClass(plant_info_add.this, MainActivity.class);
-                        //Don't think we need to send anything to the main page since it will just
-                        //grab its information from files
-                        //Bundle bundle = new Bundle();
-                        startActivity(intent);
+                                dialog.dismiss();
+                                //Go back to activity_main
+                                Intent intent = new Intent();
+                                intent.setClass(plant_info_add.this, MainActivity.class);
+                                //Don't think we need to send anything to the main page since it will just
+                                //grab its information from files
+                                //Bundle bundle = new Bundle();
+                                startActivity(intent);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        else
+                        {
+                            Toast.makeText(plant_info_add.this, "A plant with that nickname already exists!", Toast.LENGTH_LONG).show();
+                        }
                     }
                 });
                 dialog.show();
@@ -135,65 +188,24 @@ public class plant_info_add extends AppCompatActivity {
         });
     }
 
-    private void setCalenderEvents(String nickName){
-
-        CalendarView calendarView=(CalendarView)findViewById(R.id.calendarView);
-
-        Calendar b = Calendar.getInstance();
-        int currentMonth=b.get(Calendar.MONTH)+1;
-        int currentDay=b.get(Calendar.DAY_OF_MONTH);
-        int currentYear=b.get(Calendar.YEAR);
-
-        for(int i=0;i<21;i+=3){
-
-            if(currentMonth%2==1 && currentDay<=28){
-                currentDay+=3;
-            }else if(currentMonth%2==1 && currentDay>28){
-                int diff = 31-currentDay;
-
-                currentDay=3-diff;
-                currentMonth++;
-            }else if(currentMonth==2 && currentDay<=25){
-                currentDay+=3;
-            }else if(currentMonth==2 && currentDay>25){
-                int diff = 28-currentDay;
-
-                currentDay=3-diff;
-                currentMonth++;
-            }else if(currentMonth%2==0 && currentDay<=27){
-                currentDay++;
-            }else if(currentMonth!=12 && currentDay>27){
-                int diff = 30-currentDay;
-
-                currentDay=3-diff;
-                currentMonth++;
-            }else{
-                int diff = 30-currentDay;
-
-                currentDay=3-diff;
-                currentMonth++;
-                currentYear++;
+    private void setCalenderEvents(String nickName, int waterNum) {
+        String filename = "/data/data/" + this.getApplicationContext().getPackageName() + "/calendarPlants.txt";
+        try{
+            FileOutputStream outputStream = new FileOutputStream(filename, true);
+            for (int i = 1; i < 21; i++) {//Start at 1 to not include today, 21 is for 3 weeks
+                if (i % waterNum == 0) {
+                    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+                    Calendar c = Calendar.getInstance();
+                    c.setTime(new Date()); //Today's date
+                    c.add(Calendar.DAY_OF_YEAR, i);
+                    String lineToWrite = nickName + "," + sdf.format(c.getTime()) + "\n";
+                    outputStream.write(lineToWrite.getBytes());
+                }
             }
+            outputStream.close();
+        }catch(Exception ignored){
 
-            b.set(currentYear,currentMonth,currentDay);
-
-            Intent intent=new Intent(Intent.ACTION_INSERT)
-                    .setData(CalendarContract.Events.CONTENT_URI)
-                    .putExtra(CalendarContract.Events.DTSTART,b)
-                    .putExtra(CalendarContract.Events.ALL_DAY,1)
-                    .putExtra(CalendarContract.Events.TITLE,"Water your plant "+nickName+"!")
-                    .putExtra(CalendarContract.Events.ALLOWED_REMINDERS,1)
-                    .putExtra(CalendarContract.Events.CALENDAR_ID,4);
-
-
-            startActivity(intent);
         }
-
-
-
-
-
-
     }
 
     private String boolToYesOrNo(boolean b){
