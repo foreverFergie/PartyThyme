@@ -24,14 +24,77 @@
 
     <string name="server_client_id">758752525047-0g1fojfa64m8j1feimc7obgs1bmfeo0g.apps.googleusercontent.com</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="view_larger_list">View Larger List</string>
     <string name="add_a_plant">Add a Plant</string>
     <string name="notification_settings">Notification Settings</string>
-    <string name="vibrate">Vibrate:</string>
-    <string name="sound">Sound:</string>
-    <string name="alarm">Alarm:</string>
-    <string name="calendar_lifespan">Calendar Lifespan:</string>
+    <string name="vibrate">Vibrate</string>
+    <string name="sound">Sound</string>
+    <string name="alarm">Alarm</string>
+    <string name="calendar_lifespan">Calendar Lifespan</string>
     <string name="calendar_settings">Calendar Settings</string>
+
+    <string-array name="calendarLifespanOptions">
+        <item>21</item>
+        <item>28</item>
+        <item>35</item>
+        <item>42</item>
+        <item>49</item>
+        <item>56</item>
+        <item>63</item>
+        <item>70</item>
+        <item>77</item>
+        <item>84</item>
+        <item>91</item>
+        <item>100</item>
+        <item>120</item>
+        <item>140</item>
+        <item>160</item>
+        <item>180</item>
+        <item>200</item>
+        <item>240</item>
+        <item>280</item>
+        <item>320</item>
+        <item>360</item>
+
+    </string-array>
+
+
+    <string name="pref_header_general">General</string>
+
+    <string name="pref_title_social_recommendations">Enable social recommendations</string>
+    <string name="pref_description_social_recommendations">Recommendations for people to contact
+        based on your message history
+    </string>
+
+    <string name="pref_title_display_name">Display name</string>
+    <string name="pref_default_display_name">John Smith</string>
+
+    <string name="pref_title_add_friends_to_messages">Add friends to messages</string>
+
+    <string-array name="multi_select_list_preference_default_value" />
+
+    <string name="pref_title_system_sync_settings">System sync settings</string>
+
+    <!-- Example settings for Notifications -->
+    <string name="pref_header_notifications">Notifications</string>
+
+    <string name="pref_sound">Sound</string>
+    <string name="cal">21</string>
+
+    <string name="calendar_lifespan_des">"Amount of days a plant will be added to your calendar"</string>
+
+    <string name="plant_reminder_notification_title_template">Plant reminder: %1$s</string>
+
+
+    <string name="plant_reminder_notification_placeholder_text_template">You said %1$s and lorem
+        ipsum dolor sit amet, consectetur adipiscing elit. Etiam non enim magna. Morbi dictum, velit
+        vel semper venenatis, magna odio volutpat velit, at ullamcorper nulla lacus sed turpis.
+        Pellentesque vitae metus elit, nec tincidunt tellus. Integer sed nisl sem, ullamcorper
+        ornare lacus. Duis ac mauris sed massa congue volutpat. Donec sed erat sit amet turpis
+        viverra rhoncus sit amet nec magna. Donec lacinia ligula at libero volutpat volutpat nec nec
+        tortor.
+    </string>
+
+    <string name="action_share">Share</string>
+    <string name="action_reply">Reply</string>
 </resources>

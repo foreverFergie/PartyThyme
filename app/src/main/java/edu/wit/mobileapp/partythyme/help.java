@@ -2,14 +2,10 @@ package edu.wit.mobileapp.partythyme;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 public class help extends AppCompatActivity {
 
@@ -44,7 +40,7 @@ public class help extends AppCompatActivity {
 
             case R.id.action_settings:
                 Intent settings = new Intent();
-                settings.setClass(help.this,settings.class);
+                settings.setClass(help.this, SettingsPage.class);
                 startActivity(settings);
                 return true;
             case R.id.action_home:

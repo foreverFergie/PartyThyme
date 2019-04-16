@@ -1,0 +1,12 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:defaultValue="21"
+        android:dialogTitle="@string/calendar_lifespan"
+        android:entries="@array/calendarLifespanOptions"
+        android:entryValues="@array/calendarLifespanOptions"
+        android:key="calendarLifespanPick"
+        android:summary="@string/calendar_lifespan_des"
+        android:title="@string/calendar_lifespan" />
+
+</PreferenceScreen>

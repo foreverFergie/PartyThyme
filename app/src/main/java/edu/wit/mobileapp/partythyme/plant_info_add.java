@@ -3,22 +3,19 @@ package edu.wit.mobileapp.partythyme;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Environment;
-import android.provider.CalendarContract;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -26,21 +23,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
 public class plant_info_add extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -190,9 +184,14 @@ public class plant_info_add extends AppCompatActivity {
 
     private void setCalenderEvents(String nickName, int waterNum) {
         String filename = "/data/data/" + this.getApplicationContext().getPackageName() + "/calendarPlants.txt";
+
+        SharedPreferences settings= PreferenceManager.getDefaultSharedPreferences(this);
+        String cal=settings.getString("calendarLifespanPick","21");
+        int calInt=Integer.parseInt(cal);
+
         try{
             FileOutputStream outputStream = new FileOutputStream(filename, true);
-            for (int i = 1; i < 21; i++) {//Start at 1 to not include today, 21 is for 3 weeks
+            for (int i = 1; i < calInt; i++) {//Start at 1 to not include today, 21 is for 3 weeks
                 if (i % waterNum == 0) {
                     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
                     Calendar c = Calendar.getInstance();
@@ -200,6 +199,8 @@ public class plant_info_add extends AppCompatActivity {
                     c.add(Calendar.DAY_OF_YEAR, i);
                     String lineToWrite = nickName + "," + sdf.format(c.getTime()) + "\n";
                     outputStream.write(lineToWrite.getBytes());
+
+
                 }
             }
             outputStream.close();
@@ -251,7 +252,7 @@ public class plant_info_add extends AppCompatActivity {
 
             case R.id.action_settings:
                 Intent settings = new Intent();
-                settings.setClass(plant_info_add.this,settings.class);
+                settings.setClass(plant_info_add.this, SettingsPage.class);
                 startActivity(settings);
                 return true;
             case R.id.action_home:

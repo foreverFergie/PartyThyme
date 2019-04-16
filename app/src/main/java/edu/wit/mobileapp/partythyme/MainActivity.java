@@ -4,14 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.Shape;
-import android.support.annotation.ColorInt;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -24,7 +16,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.TextView;
 import com.roomorama.caldroid.CaldroidFragment;
 import java.io.BufferedReader;
@@ -188,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
         caldroidFragment.setArguments(args);
 
         FragmentTransaction t = getSupportFragmentManager().beginTransaction();
-        t.replace(R.id.calendar1, caldroidFragment);
+        t.replace(R.id.calendarView, caldroidFragment);
         t.commit();
 
 
@@ -239,14 +230,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void setCalenderWeek(){
-
-        CalendarView calendar=(CalendarView) findViewById(R.id.calendar1);
-
-
-
-    }
-
 
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.main_menu,menu);
@@ -266,8 +249,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(helpPage);
                 return true;
             case R.id.action_settings:
-                Intent settingsPage=new Intent();
-                settingsPage.setClass(MainActivity.this,settings.class);
+                Intent settingsPage=new Intent(this, SettingsPage.class);
                 startActivity(settingsPage);
                 return true;
             default:

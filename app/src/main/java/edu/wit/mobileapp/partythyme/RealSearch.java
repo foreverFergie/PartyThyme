@@ -13,7 +13,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -127,8 +126,12 @@ public class RealSearch extends AppCompatActivity {
         switch (item.getItemId()){
 
             case R.id.action_help:
-                Intent settingsPage =  new Intent();
-                settingsPage.setClass(RealSearch.this,help.class);
+                Intent helpPage =  new Intent();
+                helpPage.setClass(RealSearch.this,help.class);
+                startActivity(helpPage);
+                return true;
+            case R.id.action_settings:
+                Intent settingsPage= new Intent(this, SettingsPage.class);
                 startActivity(settingsPage);
                 return true;
             case R.id.action_home:

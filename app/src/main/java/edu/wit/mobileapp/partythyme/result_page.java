@@ -4,8 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -164,7 +162,7 @@ public class result_page extends AppCompatActivity {
 
             case R.id.action_settings:
                 Intent settings = new Intent();
-                settings.setClass(result_page.this,settings.class);
+                settings.setClass(result_page.this, SettingsPage.class);
                 startActivity(settings);
                 return true;
             case R.id.action_home:
